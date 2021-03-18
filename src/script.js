@@ -156,21 +156,31 @@ let mouseY = 0
 
 let targetX = 0
 let targetY = 0 //
-const windowHalfX = window.innerWidth / 2 ;
-const windowHalfY = window.innerHeight / 2 ;
+const windowX = window.innerWidth / 2 ;
+const windowY = window.innerHeight / 2 ;
 
-onDocumentMouseMove = (event)=>{
-    mouseX = (event.clientX - windowHalfX)
-    mouseY = (event.clientY - windowHalfY)
+function onDocumentMouseMove(event){
+    mouseX = (event.clientX - windowX)
+    mouseY = (event.clientY - windowY)
 }
+
+
 
 const clock = new THREE.Clock();
 
 const tick = () => {
+
+    targetX = mouseX* .001
+    targetY = mouseY* .001
+
   const elapsedTime = clock.getElapsedTime();
 
   // Update objects
   sphere.rotation.y = 0.5 * elapsedTime;
+
+  sphere.rotation.y += .5 * (targetX - sphere.rotation.y )
+  sphere.rotation.x += .05 * (targetY - sphere.rotation.x )
+  sphere.rotation.z += -.05 * (targetY - sphere.rotation.x )
 
   // Update Orbital Controls
   // controls.update()
