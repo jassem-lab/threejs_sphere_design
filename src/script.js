@@ -43,22 +43,56 @@ pointLight.position.y = 3;
 pointLight.position.z = 4;
 scene.add(pointLight);
 
+
+
+// Light 2 
+
 const pointLight2 = new THREE.PointLight(0xff0000, 2);
 // pointLight.position.x = 2
 // pointLight.position.y = 3
 // pointLight.position.z = 4
-pointLight2.position.set(1, 1, 1);
-pointLight2.intensity = 1;
+pointLight2.position.set(-1.86, 1, -1.65);
+pointLight2.intensity = 10;
 scene.add(pointLight2);
 
-gui.add(pointLight2.position, "y").min(-3).max(3).step(0.01);
-gui.add(pointLight2.position, "x").min(-3).max(6).step(0.01);
-gui.add(pointLight2.position, "z").min(-3).max(3).step(0.01);
-gui.add(pointLight2, "intensity").min(0).max(10).step(0.01);
+const light1 = gui.addFolder('Light 1 ')
 
-const pointLightHelper = new THREE.PointLightHelper(pointLight2, 1);
+light1.add(pointLight2.position, "y").min(-3).max(3).step(0.01);
+light1.add(pointLight2.position, "x").min(-3).max(6).step(0.01);
+light1.add(pointLight2.position, "z").min(-3).max(3).step(0.01);
+light1.add(pointLight2, "intensity").min(0).max(10).step(0.01);
 
-// scene.add(pointLightHelper);
+const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, 1);
+
+// Light 3 
+
+const pointLight3 = new THREE.PointLight(0xe1ff, 2);
+// pointLight.position.x = 2
+// pointLight.position.y = 3
+// pointLight.position.z = 4
+pointLight3.position.set(2.13 , -3 , -1.98);
+pointLight3.intensity = 6.8;
+scene.add(pointLight3);
+
+const light3 = gui.addFolder("Light 3")
+
+light3.add(pointLight3.position, "y").min(-3).max(3).step(0.01);
+light3.add(pointLight3.position, "x").min(-3).max(6).step(0.01);
+light3.add(pointLight3.position, "z").min(-3).max(3).step(0.01);
+light3.add(pointLight3, "intensity").min(0).max(10).step(0.01);
+
+const light2Color = {
+    color : 0xff0000
+}
+
+light3.addColor(light2Color , 'color')
+.onChange(()=>{
+    pointLight3.color.set(light2Color.color)
+})
+
+// const pointLightHelper3 = new THREE.PointLightHelper(pointLight3, 1);
+
+// scene.add(pointLightHelper3);
 
 /**
  * Sizes
