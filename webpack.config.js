@@ -9,5 +9,4 @@ const productionConfig = merge([
       publicPath: "/threejs_sphere_design/",
 
     },
-  },
-  ...
+  }])
