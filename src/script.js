@@ -44,7 +44,6 @@ pointLight.position.z = 4;
 scene.add(pointLight);
 
 
-
 // Light 2 
 
 const pointLight2 = new THREE.PointLight(0xff0000, 2);
